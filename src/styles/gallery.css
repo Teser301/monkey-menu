@@ -1,0 +1,29 @@
+.gallery-host {
+  transform: perspective(1000px);
+  transform-style: preserve-3d;
+}
+.gallery-child {
+  transition: 0.5s;
+  filter: brightness(0.5);
+}
+.gallery-child:hover {
+  filter: brightness(1);
+  transform: translateZ(200px);
+}
+.gallery-child:hover + * {
+  filter: brightness(1);
+  transform: translateZ(150px) rotateY(20deg);
+}
+
+.gallery-child:hover + * + * {
+  filter: brightness(1);
+  transform: translateZ(50px) rotateY(10deg);
+}
+.gallery-child:has(+ *:hover) {
+  filter: brightness(1);
+  transform: translateZ(150px) rotateY(-20deg);
+}
+.gallery-child:has(+ * + *:hover) {
+  filter: brightness(1);
+  transform: translateZ(50px) rotateY(-10deg);
+}
